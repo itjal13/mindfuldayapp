@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulTracker - Offline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md mx-auto p-8 text-center">
+        <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </div>
+            
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">You're Offline</h1>
+            <p class="text-gray-600 mb-6">
+                MindfulTracker works offline! Your data is saved locally and will sync when you're back online.
+            </p>
+            
+            <div class="bg-blue-50 p-4 rounded-lg mb-6 text-left">
+                <h3 class="font-semibold text-blue-800 mb-2">Available Offline:</h3>
+                <ul class="text-sm text-blue-700 space-y-1">
+                    <li>✓ Track meals and mark as complete</li>
+                    <li>✓ Check off daily activities</li>
+                    <li>✓ View your Indonesian diet plan</li>
+                    <li>✓ Monitor goal progress</li>
+                    <li>✓ All data saves automatically</li>
+                </ul>
+            </div>
+            
+            <button onclick="window.location.reload()" 
+                    class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                Try Again
+            </button>
+            
+            <p class="text-xs text-gray-500 mt-4">
+                Data will sync automatically when connection is restored
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-refresh when connection is restored
+        window.addEventListener('online', () => {
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

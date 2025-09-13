@@ -1,0 +1,68 @@
+{
+  "name": "MindfulTracker Pro",
+  "short_name": "MindfulTracker",
+  "description": "Complete mindful living tracker with Indonesian diet plan, daily schedule, and consciousness-based goals for IT professionals.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#7C3AED",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect width='72' height='72' fill='%237C3AED' rx='16'/%3E%3Ccircle cx='36' cy='36' r='24' fill='white' opacity='0.2'/%3E%3Cpath d='M24 32 L32 40 L48 24' stroke='white' stroke-width='3' fill='none'/%3E%3C/svg%3E",
+      "sizes": "72x72",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%237C3AED' rx='20'/%3E%3Ccircle cx='48' cy='48' r='32' fill='white' opacity='0.2'/%3E%3Cpath d='M32 44 L42 54 L64 32' stroke='white' stroke-width='4' fill='none'/%3E%3C/svg%3E",
+      "sizes": "96x96",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 144 144'%3E%3Crect width='144' height='144' fill='%237C3AED' rx='32'/%3E%3Ccircle cx='72' cy='72' r='48' fill='white' opacity='0.2'/%3E%3Cpath d='M48 68 L60 80 L96 44' stroke='white' stroke-width='6' fill='none'/%3E%3C/svg%3E",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%237C3AED' rx='48'/%3E%3Ccircle cx='96' cy='96' r='64' fill='white' opacity='0.2'/%3E%3Cpath d='M64 92 L80 108 L128 60' stroke='white' stroke-width='8' fill='none'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%237C3AED' rx='128'/%3E%3Ccircle cx='256' cy='256' r='160' fill='white' opacity='0.2'/%3E%3Cpath d='M180 240 L220 280 L340 160' stroke='white' stroke-width='20' fill='none'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["health", "lifestyle", "productivity"],
+  "lang": "en",
+  "shortcuts": [
+    {
+      "name": "Today's Meals",
+      "short_name": "Meals",
+      "description": "Track your Indonesian diet plan",
+      "url": "/?tab=meals",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%2310B981' rx='20'/%3E%3Cpath d='M30 40 L66 40 M30 48 L66 48 M30 56 L66 56' stroke='white' stroke-width='4'/%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Daily Schedule",
+      "short_name": "Schedule",
+      "description": "View your mindful daily routine",
+      "url": "/?tab=schedule",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' fill='%233B82F6' rx='20'/%3E%3Cpath d='M48 24 L48 48 L64 48' stroke='white' stroke-width='4' fill='none'/%3E%3Ccircle cx='48' cy='48' r='20' stroke='white' stroke-width='4' fill='none'/%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
