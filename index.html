@@ -12,20 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="MindfulTracker Pro">
     
-    <!-- Icons -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%237C3AED'/%3E%3Cpath d='M30 45 L45 60 L70 35' stroke='white' stroke-width='4' fill='none'/%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%237C3AED' rx='40'/%3E%3Ccircle cx='90' cy='90' r='60' fill='white' opacity='0.2'/%3E%3Cpath d='M60 85 L80 105 L120 65' stroke='white' stroke-width='6' fill='none'/%3E%3C/svg%3E">
+    <!-- Embedded Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk1pbmRmdWxUcmFja2VyIFBybyIsCiAgInNob3J0X25hbWUiOiAiTWluZGZ1bFRyYWNrZXIiLAogICJkZXNjcmlwdGlvbiI6ICJDb21wbGV0ZSBtaW5kZnVsIGxpdmluZyB0cmFja2VyIHdpdGggSW5kb25lc2lhbiBkaWV0IHBsYW4uIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNGOUZBRkIiLAogICJ0aGVtZV9jb2xvciI6ICIjN0MzQUVEIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWwsJTNDc3ZnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgdmlld0JveD0nMCAwIDcyIDcyJyUzRSUzQ3JlY3Qgd2lkdGg9JzcyJyBoZWlnaHQ9JzcyJyBmaWxsPSclMjM3QzNBRUQnIHJ4PScxNicvJTNFJTNDY2lyY2xlIGN4PSczNicgY3k9JzM2JyByPScyNCcgZmlsbD0nd2hpdGUnIG9wYWNpdHk9JzAuMicvJTNFJTNDcGF0aCBkPSdNMjQgMzIgTDMyIDQwIEw0OCAyNCcgc3Ryb2tlPSd3aGl0ZScgc3Ryb2tlLXdpZHRoPSczJyBmaWxsPSdub25lJy8lM0UlM0Mvc3ZnJTNFIiwKICAgICAgInNpemVzIjogIjcyeDcyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0KICBdCn0=">
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <!-- Icons -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%237C3AED'/%3E%3Cpath d='M30 45 L45 60 L70 35' stroke='white' stroke-width='4' fill='none'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%237C3AED' rx='40'/%3E%3Ccircle cx='90' cy='90' r='60' fill='white' opacity='0.2'/%3E%3Cpath d='M60 85 L80 105 L120 65' stroke='white' stroke-width='6' fill='none'/%3E%3C/svg%3E">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- React and Lucide Icons -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <style>
         body {
@@ -35,7 +30,6 @@
             -webkit-tap-highlight-color: transparent;
         }
         
-        /* PWA Specific Styles */
         @media (display-mode: standalone) {
             body {
                 padding-top: env(safe-area-inset-top);
@@ -43,7 +37,6 @@
             }
         }
         
-        /* Offline Indicator */
         .offline-indicator {
             position: fixed;
             top: 0;
@@ -63,7 +56,6 @@
             transform: translateY(0);
         }
         
-        /* Install prompt */
         .install-prompt {
             position: fixed;
             bottom: 90px;
@@ -80,6 +72,28 @@
         .install-prompt.show {
             display: block;
         }
+
+        /* Simple Icons */
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+        
+        .icon-dashboard::before { content: "📊"; }
+        .icon-schedule::before { content: "📅"; }
+        .icon-meals::before { content: "🍽️"; }
+        .icon-goals::before { content: "🎯"; }
+        .icon-sun::before { content: "☀️"; }
+        .icon-heart::before { content: "❤️"; }
+        .icon-star::before { content: "⭐"; }
+        .icon-dumbbell::before { content: "🏋️"; }
+        .icon-users::before { content: "👥"; }
+        .icon-briefcase::before { content: "💼"; }
+        .icon-book::before { content: "📖"; }
+        .icon-check::before { content: "✅"; }
+        .icon-circle::before { content: "⭕"; }
+        .icon-camera::before { content: "📸"; }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -102,31 +116,664 @@
         </div>
     </div>
     
-    <!-- React App Container -->
-    <div id="root"></div>
+    <!-- App Container -->
+    <div id="app"></div>
 
     <script>
-        // PWA Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
+        // Simple App State Management
+        const AppState = {
+            activeTab: 'dashboard',
+            currentTime: new Date(),
+            completedActivities: new Set(),
+            currentDay: 0,
+            meals: []
+        };
+
+        // Load saved data
+        function loadData() {
+            const savedActivities = localStorage.getItem('completedActivities');
+            const savedDay = localStorage.getItem('currentDay');
+            
+            if (savedActivities) {
+                AppState.completedActivities = new Set(JSON.parse(savedActivities));
+            }
+            if (savedDay) {
+                AppState.currentDay = parseInt(savedDay);
+            }
+        }
+
+        // Save data
+        function saveData() {
+            localStorage.setItem('completedActivities', JSON.stringify([...AppState.completedActivities]));
+            localStorage.setItem('currentDay', AppState.currentDay.toString());
+        }
+
+        // Indonesian Diet Plan Data
+        const dietPlan = [
+            {
+                day: 'Monday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 1, time: '10:00', type: 'Break Fast', food: 'Ikan bawal bakar 180g + sambal terasi + Telur mata sapi (2 butir) + timun', calories: 580, protein: 52, carbs: 8, fat: 38 },
+                    { id: 2, time: '13:00', type: 'Lunch', food: 'Soto ayam (daging 120g) + telur rebus + Tahu goreng (3 potong) + tauge', calories: 650, protein: 48, carbs: 15, fat: 42 },
+                    { id: 3, time: '17:30', type: 'Final Meal', food: 'Rendang daging 120g + tumis kangkung + Tempe bacem (4 potong) + kelapa parut', calories: 670, protein: 58, carbs: 34, fat: 36 }
+                ]
+            },
+            {
+                day: 'Tuesday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 4, time: '10:00', type: 'Break Fast', food: 'Pecel lele (2 ekor) + lalapan mentah + Rempeyek kacang (1 genggam)', calories: 590, protein: 48, carbs: 12, fat: 40 },
+                    { id: 5, time: '13:00', type: 'Lunch', food: 'Bakso ikan (4 butir) + kuah kaldu + Telur puyuh (6 butir) + sayur sawi', calories: 640, protein: 46, carbs: 18, fat: 38 },
+                    { id: 6, time: '17:30', type: 'Final Meal', food: 'Ayam bakar bumbu rujak 150g + Gado-gado tanpa lontong + bumbu kacang', calories: 670, protein: 64, carbs: 27, fat: 38 }
+                ]
+            },
+            {
+                day: 'Wednesday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 7, time: '10:00', type: 'Break Fast', food: 'Ikan tongkol kaleng 150g + sambal kacang + Perkedel tahu (2 potong) + kemangi', calories: 580, protein: 50, carbs: 10, fat: 38 },
+                    { id: 8, time: '13:00', type: 'Lunch', food: 'Gudeg tanpa nasi + ayam kampung 100g + Telur balado (2 butir) + tempe goreng', calories: 650, protein: 52, carbs: 22, fat: 36 },
+                    { id: 9, time: '17:30', type: 'Final Meal', food: 'Ikan mujair bakar 200g + plecing kangkung + Urap-urap + kelapa parut segar', calories: 670, protein: 56, carbs: 25, fat: 42 }
+                ]
+            },
+            {
+                day: 'Thursday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 10, time: '10:00', type: 'Break Fast', food: 'Sate kambing (12 tusuk) + bawang merah + Timun + cabe rawit + garam', calories: 590, protein: 54, carbs: 8, fat: 38 },
+                    { id: 11, time: '13:00', type: 'Lunch', food: 'Rawon tanpa nasi + daging 120g + Telur asin (2 butir) + kerupuk ikan', calories: 630, protein: 50, carbs: 12, fat: 42 },
+                    { id: 12, time: '17:30', type: 'Final Meal', food: 'Ikan bandeng presto 180g + tumis tauge + Sambel goreng tempe + cabai hijau', calories: 680, protein: 54, carbs: 37, fat: 36 }
+                ]
+            },
+            {
+                day: 'Friday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 13, time: '10:00', type: 'Break Fast', food: 'Pepes ikan mas 180g + daun kemangi + Lalap mentah + sambal terasi', calories: 570, protein: 48, carbs: 8, fat: 38 },
+                    { id: 14, time: '13:00', type: 'Lunch', food: 'Sop buntut + daging 100g + telur rebus + Tahu kuning goreng (3 potong)', calories: 660, protein: 52, carbs: 15, fat: 44 },
+                    { id: 15, time: '17:30', type: 'Final Meal', food: 'Ayam penyet 150g + sambal + lalapan + Tumis bayam + jagung muda + tempe', calories: 670, protein: 58, carbs: 34, fat: 34 }
+                ]
+            },
+            {
+                day: 'Saturday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 16, time: '10:00', type: 'Break Fast', food: 'Ikan asin jambal roti + tumis kangkung + Telur dadar (2 butir) + bawang daun', calories: 580, protein: 46, carbs: 10, fat: 40 },
+                    { id: 17, time: '13:00', type: 'Lunch', food: 'Empal daging 120g + sayur asem + Tempe mendoan (4 potong) + cabai', calories: 650, protein: 54, carbs: 18, fat: 38 },
+                    { id: 18, time: '17:30', type: 'Final Meal', food: 'Ikan gurame bakar 180g + plecing kangkung + Perkedel jagung (2 potong) + sambal', calories: 670, protein: 58, carbs: 29, fat: 38 }
+                ]
+            },
+            {
+                day: 'Sunday',
+                fastingWindow: '18:00 - 10:00',
+                meals: [
+                    { id: 19, time: '10:00', type: 'Break Fast', food: 'Bebek goreng 120g + lalapan segar + Rempeyek kacang tanah + kerupuk', calories: 590, protein: 48, carbs: 12, fat: 42 },
+                    { id: 20, time: '13:00', type: 'Lunch', food: 'Tongseng kambing 100g + kubis + telur + Tahu putih rebus (4 potong) + sambal', calories: 640, protein: 52, carbs: 18, fat: 38 },
+                    { id: 21, time: '17:30', type: 'Final Meal', food: 'Ikan salmon/dori panggang 180g + Capcay + tahu + tauge + minyak kelapa', calories: 670, protein: 58, carbs: 27, fat: 36 }
+                ]
+            }
+        ];
+
+        const scheduledActivities = [
+            { id: 1, time: '04:30', activity: 'Wake Up + Personal Care', duration: 10, category: 'self-care', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'sun' },
+            { id: 2, time: '04:40', activity: 'Mindful Meditation', duration: 10, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'heart' },
+            { id: 3, time: '04:50', activity: 'Fajr Prayer + Presence Practice', duration: 15, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'star' },
+            { id: 4, time: '05:05', activity: 'Mindful Movement (Indoor)', duration: 15, category: 'physical', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'dumbbell' },
+            { id: 5, time: '05:20', activity: 'Mindful Walk/Nature Connection', duration: 15, category: 'physical', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'sun' },
+            { id: 6, time: '05:35', activity: 'Personal Preparation', duration: 20, category: 'self-care', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'sun' },
+            { id: 7, time: '05:55', activity: 'Family Time/Breakfast', duration: 20, category: 'family', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'users' },
+            { id: 8, time: '06:30', activity: 'Work (Deep Focus Blocks)', duration: 720, category: 'career', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'briefcase' },
+            { id: 9, time: '19:00', activity: 'Maghrib Prayer + Mindful Presence', duration: 15, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'star' },
+            { id: 10, time: '19:15', activity: 'Mindful Family Dinner', duration: 45, category: 'family', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'users' },
+            { id: 11, time: '20:00', activity: 'Conscious Family Time', duration: 30, category: 'family', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'users' },
+            { id: 12, time: '20:30', activity: 'Isha Prayer + Contemplation', duration: 15, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'star' },
+            { id: 13, time: '20:45', activity: 'Productive Wind-down Routine', duration: 30, category: 'development', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'book' }
+        ];
+
+        const profileStats = {
+            weight: 72,
+            height: 168,
+            age: 40,
+            bmi: 25.5,
+            targetWeight: '65-68kg',
+            dailyTarget: 1900
+        };
+
+        // Initialize meals for current day
+        function initializeMeals() {
+            const saved = localStorage.getItem(`meals_day_${AppState.currentDay}`);
+            if (saved) {
+                AppState.meals = JSON.parse(saved);
+            } else {
+                AppState.meals = dietPlan[AppState.currentDay].meals.map(meal => ({ 
+                    ...meal, 
+                    photo: false, 
+                    completed: false 
+                }));
+            }
+        }
+
+        // Helper Functions
+        function getCurrentDaySchedule() {
+            const today = AppState.currentTime.toLocaleDateString('en-US', { weekday: 'long' });
+            return scheduledActivities
+                .filter(activity => activity.days.includes(today))
+                .sort((a, b) => a.time.localeCompare(b.time));
+        }
+
+        function getCurrentActivity() {
+            const todaySchedule = getCurrentDaySchedule();
+            const currentTimeStr = AppState.currentTime.toTimeString().slice(0, 5);
+            
+            return todaySchedule.find(activity => {
+                const [hours, minutes] = activity.time.split(':');
+                const activityEndTime = new Date();
+                activityEndTime.setHours(parseInt(hours), parseInt(minutes) + activity.duration);
+                const endTimeStr = activityEndTime.toTimeString().slice(0, 5);
+                
+                return activity.time <= currentTimeStr && currentTimeStr <= endTimeStr;
             });
         }
 
-        // Install Prompt Logic
+        function getNextActivity() {
+            const todaySchedule = getCurrentDaySchedule();
+            const currentTimeStr = AppState.currentTime.toTimeString().slice(0, 5);
+            
+            return todaySchedule.find(activity => activity.time > currentTimeStr);
+        }
+
+        function getTotalCalories() {
+            return AppState.meals.filter(meal => meal.completed).reduce((total, meal) => total + meal.calories, 0);
+        }
+
+        function getTotalMacros() {
+            const completedMeals = AppState.meals.filter(meal => meal.completed);
+            return {
+                protein: completedMeals.reduce((total, meal) => total + meal.protein, 0),
+                carbs: completedMeals.reduce((total, meal) => total + meal.carbs, 0),
+                fat: completedMeals.reduce((total, meal) => total + meal.fat, 0)
+            };
+        }
+
+        // Event Handlers
+        function toggleActivity(activityId) {
+            if (AppState.completedActivities.has(activityId)) {
+                AppState.completedActivities.delete(activityId);
+            } else {
+                AppState.completedActivities.add(activityId);
+            }
+            saveData();
+            render();
+        }
+
+        function toggleMeal(mealId) {
+            AppState.meals = AppState.meals.map(meal => 
+                meal.id === mealId ? { ...meal, completed: !meal.completed } : meal
+            );
+            localStorage.setItem(`meals_day_${AppState.currentDay}`, JSON.stringify(AppState.meals));
+            render();
+        }
+
+        function addPhotoToMeal(mealId) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.capture = 'environment';
+            
+            input.onchange = (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    AppState.meals = AppState.meals.map(meal => 
+                        meal.id === mealId ? { ...meal, photo: true } : meal
+                    );
+                    localStorage.setItem(`meals_day_${AppState.currentDay}`, JSON.stringify(AppState.meals));
+                    render();
+                }
+            };
+            
+            input.click();
+        }
+
+        function changeDietDay(direction) {
+            AppState.currentDay = direction === 'next' ? 
+                (AppState.currentDay + 1) % 7 : 
+                AppState.currentDay === 0 ? 6 : AppState.currentDay - 1;
+            initializeMeals();
+            saveData();
+            render();
+        }
+
+        function setActiveTab(tab) {
+            AppState.activeTab = tab;
+            render();
+        }
+
+        // Render Functions
+        function renderDashboard() {
+            const currentActivity = getCurrentActivity();
+            const nextActivity = getNextActivity();
+            const todaySchedule = getCurrentDaySchedule();
+            const completedToday = todaySchedule.filter(activity => AppState.completedActivities.has(activity.id)).length;
+            const macros = getTotalMacros();
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6 rounded-lg">
+                        <h2 class="text-2xl font-bold mb-2">Mindful Day Tracker</h2>
+                        <p class="text-purple-100">Living consciously, one moment at a time</p>
+                        <div class="mt-3 text-sm">
+                            <p>${AppState.currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • ${AppState.currentTime.toLocaleDateString('en-US', { weekday: 'long' })}</p>
+                        </div>
+                    </div>
+
+                    ${currentActivity ? `
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                            <div class="flex items-center">
+                                <div class="mr-3 text-green-600"><span class="icon icon-${currentActivity.icon}"></span></div>
+                                <div>
+                                    <p class="font-semibold text-green-800">Now: ${currentActivity.activity}</p>
+                                    <p class="text-sm text-green-600">${currentActivity.time} • ${currentActivity.duration} min</p>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    ${nextActivity ? `
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                            <div class="flex items-center">
+                                <div class="mr-3 text-blue-600"><span class="icon icon-${nextActivity.icon}"></span></div>
+                                <div>
+                                    <p class="font-semibold text-blue-800">Next: ${nextActivity.activity}</p>
+                                    <p class="text-sm text-blue-600">${nextActivity.time} • ${nextActivity.duration} min</p>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg border shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-600">Schedule Progress</p>
+                                    <p class="text-2xl font-bold text-purple-600">${completedToday}/${todaySchedule.length}</p>
+                                </div>
+                                <span class="text-purple-500 text-2xl">📊</span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-gray-600">Diet Calories</p>
+                                    <p class="text-2xl font-bold text-green-600">${getTotalCalories()}</p>
+                                </div>
+                                <span class="text-green-500 text-2xl">❤️</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border shadow-sm">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center">
+                            <span class="mr-2 text-green-600">🎯</span>
+                            Indonesian Diet Progress
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                <p class="text-lg font-bold text-blue-600">${profileStats.weight}kg</p>
+                                <p class="text-xs text-blue-700">Current</p>
+                            </div>
+                            <div class="text-center p-3 bg-green-50 rounded-lg">
+                                <p class="text-lg font-bold text-green-600">${profileStats.targetWeight}</p>
+                                <p class="text-xs text-green-700">Target</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Daily Target</span>
+                                <span>${getTotalCalories()}/${profileStats.dailyTarget} cal</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="h-2 rounded-full bg-green-500" style="width: ${Math.min((getTotalCalories() / profileStats.dailyTarget) * 100, 100)}%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid grid-cols-3 gap-2 text-xs">
+                            <div class="text-center p-2 bg-red-50 rounded">
+                                <p class="font-bold text-red-600">${macros.protein}g</p>
+                                <p class="text-red-700">Protein</p>
+                            </div>
+                            <div class="text-center p-2 bg-yellow-50 rounded">
+                                <p class="font-bold text-yellow-600">${macros.carbs}g</p>
+                                <p class="text-yellow-700">Carbs</p>
+                            </div>
+                            <div class="text-center p-2 bg-purple-50 rounded">
+                                <p class="font-bold text-purple-600">${macros.fat}g</p>
+                                <p class="text-purple-700">Fat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSchedule() {
+            const todaySchedule = getCurrentDaySchedule();
+            const currentActivity = getCurrentActivity();
+
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg border shadow-sm">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center">
+                            <span class="mr-2 text-blue-600">📅</span>
+                            Today's Schedule
+                        </h3>
+                        <div class="space-y-3">
+                            ${todaySchedule.map(activity => {
+                                const isCompleted = AppState.completedActivities.has(activity.id);
+                                const isCurrent = currentActivity?.id === activity.id;
+                                const categoryColors = {
+                                    spiritual: 'bg-purple-500',
+                                    physical: 'bg-green-500',
+                                    family: 'bg-blue-500',
+                                    career: 'bg-orange-500',
+                                    'self-care': 'bg-pink-500',
+                                    development: 'bg-indigo-500'
+                                };
+                                
+                                return `
+                                    <div class="p-4 rounded-lg border-l-4 ${
+                                        isCurrent ? 'bg-green-50 border-green-500' :
+                                        isCompleted ? 'bg-gray-50 border-gray-300' :
+                                        'bg-white border-gray-200'
+                                    }">
+                                        <div class="flex items-center space-x-3">
+                                            <button onclick="toggleActivity(${activity.id})" class="flex-shrink-0">
+                                                <span class="text-2xl">${isCompleted ? '✅' : '⭕'}</span>
+                                            </button>
+                                            <div class="p-2 rounded-full text-white ${categoryColors[activity.category]}">
+                                                <span class="icon icon-${activity.icon}"></span>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex items-center space-x-2">
+                                                    <span class="font-medium text-sm">${activity.time}</span>
+                                                    <span class="text-xs text-gray-500">• ${activity.duration} min</span>
+                                                    ${isCurrent ? '<span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">NOW</span>' : ''}
+                                                </div>
+                                                <p class="text-sm mt-1 ${isCompleted ? 'line-through text-gray-500' : 'text-gray-800'}">
+                                                    ${activity.activity}
+                                                </p>
+                                                <span class="inline-block px-2 py-1 text-xs rounded-full text-white mt-1 ${categoryColors[activity.category]}">
+                                                    ${activity.category}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMeals() {
+            const todayDiet = dietPlan[AppState.currentDay];
+            const completedMeals = AppState.meals.filter(meal => meal.completed).length;
+            
+            return `
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white p-6 rounded-lg">
+                        <h2 class="text-xl font-bold mb-2">Indonesian Diet Plan</h2>
+                        <p class="text-green-100">16:8 Intermittent Fasting • 1,900 cal/day</p>
+                        <div class="mt-3 text-sm">
+                            <p>🕐 Fasting Window: ${todayDiet.fastingWindow}</p>
+                            <p>📊 BMI: ${profileStats.bmi} • Target: ${profileStats.targetWeight}</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg border shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <button onclick="changeDietDay('prev')" class="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200">
+                                ← Previous
+                            </button>
+                            <div class="text-center">
+                                <h3 class="font-semibold">${todayDiet.day}</h3>
+                                <p class="text-xs text-gray-600">Day ${AppState.currentDay + 1} of 7</p>
+                            </div>
+                            <button onclick="changeDietDay('next')" class="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200">
+                                Next →
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg border shadow-sm">
+                        <h3 class="font-semibold mb-3">Daily Progress</h3>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="text-center p-3 bg-green-50 rounded-lg">
+                                <p class="text-xl font-bold text-green-600">${getTotalCalories()}</p>
+                                <p class="text-xs text-green-700">Calories</p>
+                            </div>
+                            <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                <p class="text-xl font-bold text-blue-600">${completedMeals}/3</p>
+                                <p class="text-xs text-blue-700">Meals</p>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="h-3 rounded-full bg-gradient-to-r from-green-500 to-blue-500" style="width: ${Math.min((getTotalCalories() / profileStats.dailyTarget) * 100, 100)}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border shadow-sm">
+                        <h3 class="text-lg font-semibold mb-4">Today's Meals</h3>
+                        <div class="space-y-4">
+                            ${AppState.meals.map(meal => `
+                                <div class="p-4 rounded-lg border-l-4 ${meal.completed ? 'bg-green-50 border-green-500' : 'bg-gray-50 border-gray-300'}">
+                                    <div class="flex items-start justify-between">
+                                        <div class="flex-1">
+                                            <div class="flex items-center space-x-3 mb-2">
+                                                <button onclick="toggleMeal(${meal.id})" class="flex-shrink-0">
+                                                    <span class="text-2xl">${meal.completed ? '✅' : '⭕'}</span>
+                                                </button>
+                                                <div class="flex-1">
+                                                    <div class="flex items-center space-x-2">
+                                                        <span class="font-medium text-blue-700">${meal.type}</span>
+                                                        <span class="text-sm text-gray-500">${meal.time}</span>
+                                                    </div>
+                                                    <p class="text-sm text-gray-800 mt-1">${meal.food}</p>
+                                                    <div class="flex items-center space-x-3 mt-2 text-xs">
+                                                        <span class="bg-red-100 text-red-700 px-2 py-1 rounded">${meal.calories} cal</span>
+                                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded">P: ${meal.protein}g</span>
+                                                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">C: ${meal.carbs}g</span>
+                                                        <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded">F: ${meal.fat}g</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col items-center space-y-2 ml-4">
+                                            <button onclick="addPhotoToMeal(${meal.id})" class="p-3 rounded-lg transition-colors ${meal.photo ? 'bg-green-100 text-green-600' : 'bg-blue-100 text-blue-600 hover:bg-blue-200'}">
+                                                📸
+                                            </button>
+                                            <p class="text-xs text-gray-500">${meal.photo ? '✓ Photo' : 'Add Photo'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border shadow-sm">
+                        <h3 class="text-lg font-semibold mb-4">Diet Success Tips</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 bg-blue-50 rounded-lg">
+                                <p class="font-medium text-blue-800">Intermittent Fasting</p>
+                                <p class="text-blue-600">16-hour fast activates autophagy & fat burning</p>
+                            </div>
+                            <div class="p-3 bg-green-50 rounded-lg">
+                                <p class="font-medium text-green-800">Indonesian Foods</p>
+                                <p class="text-green-600">Blood type AB optimal: fish, seafood, vegetables</p>
+                            </div>
+                            <div class="p-3 bg-purple-50 rounded-lg">
+                                <p class="font-medium text-purple-800">Weight Loss Target</p>
+                                <p class="text-purple-600">0.5kg/week = 4-10kg total in 3-4 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGoals() {
+            return `
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg border shadow-sm">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center">
+                            <span class="mr-2 text-purple-600">🎯</span>
+                            Life Goals Dashboard
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg border">
+                                <h4 class="font-semibold text-purple-800">Ultimate Purpose</h4>
+                                <p class="text-sm text-purple-700 mt-1 italic">
+                                    "The ultimate goal of all goals is happiness, and happiness is your true nature" - Rupert Spira
+                                </p>
+                            </div>
+
+                            <div class="grid gap-4">
+                                <div class="p-4 border rounded-lg bg-blue-50">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-semibold text-blue-800 flex items-center">
+                                            ⭐ Spiritual Consistency
+                                        </h4>
+                                        <span class="bg-purple-500 text-white px-3 py-1 text-sm rounded-full">85%</span>
+                                    </div>
+                                    <p class="text-sm text-blue-700 mb-2">Daily prayers + meditation practice</p>
+                                    <div class="w-full bg-blue-200 rounded-full h-2">
+                                        <div class="h-2 rounded-full bg-purple-500" style="width: 85%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 border rounded-lg bg-green-50">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-semibold text-green-800 flex items-center">
+                                            👥 Family Presence
+                                        </h4>
+                                        <span class="bg-blue-500 text-white px-3 py-1 text-sm rounded-full">90%</span>
+                                    </div>
+                                    <p class="text-sm text-green-700 mb-2">Quality conscious family time</p>
+                                    <div class="w-full bg-green-200 rounded-full h-2">
+                                        <div class="h-2 rounded-full bg-blue-500" style="width: 90%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 border rounded-lg bg-orange-50">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-semibold text-orange-800 flex items-center">
+                                            💼 Mindful Leadership
+                                        </h4>
+                                        <span class="bg-orange-500 text-white px-3 py-1 text-sm rounded-full">78%</span>
+                                    </div>
+                                    <p class="text-sm text-orange-700 mb-2">Leading from awareness at Mubadala Energy</p>
+                                    <div class="w-full bg-orange-200 rounded-full h-2">
+                                        <div class="h-2 rounded-full bg-orange-500" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg border shadow-sm">
+                        <h3 class="text-lg font-semibold mb-4">Implementation Strategy</h3>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-indigo-50 rounded-lg">
+                                <p class="text-sm font-medium text-indigo-800">Week 1-2: Foundation</p>
+                                <p class="text-xs text-indigo-600">4:30 AM wake-up & prayer consistency</p>
+                            </div>
+                            <div class="p-3 bg-purple-50 rounded-lg">
+                                <p class="text-sm font-medium text-purple-800">Week 3-4: Integration</p>
+                                <p class="text-xs text-purple-600">Family presence & work transitions</p>
+                            </div>
+                            <div class="p-3 bg-green-50 rounded-lg">
+                                <p class="text-sm font-medium text-green-800">Month 2+: Mastery</p>
+                                <p class="text-xs text-green-600">Fine-tune from expanded awareness</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-4 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg">
+                            <p class="text-sm italic text-gray-700 text-center">
+                                "Live the present moment wisely and earnestly" - Deepak Chopra
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function render() {
+            const app = document.getElementById('app');
+            
+            let content = '';
+            switch (AppState.activeTab) {
+                case 'dashboard':
+                    content = renderDashboard();
+                    break;
+                case 'schedule':
+                    content = renderSchedule();
+                    break;
+                case 'meals':
+                    content = renderMeals();
+                    break;
+                case 'goals':
+                    content = renderGoals();
+                    break;
+            }
+            
+            app.innerHTML = `
+                <div class="min-h-screen bg-gray-100 pb-20">
+                    <!-- Header -->
+                    <div class="bg-white shadow-sm border-b">
+                        <div class="max-w-md mx-auto px-4 py-3">
+                            <h1 class="text-xl font-bold text-gray-800">MindfulTracker Pro</h1>
+                            <p class="text-xs text-gray-600">Consciousness-Based Daily Living</p>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="max-w-md mx-auto p-4">
+                        ${content}
+                    </div>
+
+                    <!-- Bottom Navigation -->
+                    <div class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg">
+                        <div class="max-w-md mx-auto px-4 py-2">
+                            <div class="flex justify-around">
+                                <button onclick="setActiveTab('dashboard')" class="flex flex-col items-center py-2 px-3 rounded-lg ${AppState.activeTab === 'dashboard' ? 'bg-purple-100 text-purple-600' : 'text-gray-600'}">
+                                    <span class="text-2xl mb-1">📊</span>
+                                    <span class="text-xs">Dashboard</span>
+                                </button>
+                                <button onclick="setActiveTab('schedule')" class="flex flex-col items-center py-2 px-3 rounded-lg ${AppState.activeTab === 'schedule' ? 'bg-blue-100 text-blue-600' : 'text-gray-600'}">
+                                    <span class="text-2xl mb-1">📅</span>
+                                    <span class="text-xs">Schedule</span>
+                                </button>
+                                <button onclick="setActiveTab('meals')" class="flex flex-col items-center py-2 px-3 rounded-lg ${AppState.activeTab === 'meals' ? 'bg-green-100 text-green-600' : 'text-gray-600'}">
+                                    <span class="text-2xl mb-1">🍽️</span>
+                                    <span class="text-xs">Meals</span>
+                                </button>
+                                <button onclick="setActiveTab('goals')" class="flex flex-col items-center py-2 px-3 rounded-lg ${AppState.activeTab === 'goals' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'}">
+                                    <span class="text-2xl mb-1">🎯</span>
+                                    <span class="text-xs">Goals</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // PWA Install Logic
         let deferredPrompt;
         
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             
-            // Show custom install prompt after 3 seconds
             setTimeout(() => {
                 document.getElementById('install-prompt').classList.add('show');
             }, 3000);
@@ -164,294 +811,24 @@
         window.addEventListener('offline', updateOnlineStatus);
         updateOnlineStatus();
 
-        // React Component
-        const { useState, useEffect } = React;
-        const { Camera, Plus, Target, Calendar, TrendingUp, CheckCircle2, Circle, Moon, Sun, Heart, Book, Dumbbell, Users, Briefcase, Star } = lucide;
+        // Update time every minute
+        setInterval(() => {
+            AppState.currentTime = new Date();
+            if (AppState.activeTab === 'dashboard' || AppState.activeTab === 'schedule') {
+                render();
+            }
+        }, 60000);
 
-        function MindfulTracker() {
-            const [activeTab, setActiveTab] = useState('dashboard');
-            const [currentTime, setCurrentTime] = useState(new Date());
-            const [completedActivities, setCompletedActivities] = useState(new Set());
-            const [currentDay, setCurrentDay] = useState(0);
-            
-            // Load data from localStorage on startup
-            useEffect(() => {
-                const savedCompletedActivities = localStorage.getItem('completedActivities');
-                const savedCurrentDay = localStorage.getItem('currentDay');
-                
-                if (savedCompletedActivities) {
-                    setCompletedActivities(new Set(JSON.parse(savedCompletedActivities)));
-                }
-                if (savedCurrentDay) {
-                    setCurrentDay(parseInt(savedCurrentDay));
-                }
-            }, []);
-            
-            // Save data to localStorage whenever state changes
-            useEffect(() => {
-                localStorage.setItem('completedActivities', JSON.stringify([...completedActivities]));
-            }, [completedActivities]);
-            
-            useEffect(() => {
-                localStorage.setItem('currentDay', currentDay.toString());
-            }, [currentDay]);
-            
-            // Your 7-day Indonesian diet plan
-            const dietPlan = [
-                {
-                    day: 'Monday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 1, time: '10:00', type: 'Break Fast', food: 'Ikan bawal bakar 180g + sambal terasi + Telur mata sapi (2 butir) + timun', calories: 580, protein: 52, carbs: 8, fat: 38 },
-                        { id: 2, time: '13:00', type: 'Lunch', food: 'Soto ayam (daging 120g) + telur rebus + Tahu goreng (3 potong) + tauge', calories: 650, protein: 48, carbs: 15, fat: 42 },
-                        { id: 3, time: '17:30', type: 'Final Meal', food: 'Rendang daging 120g + tumis kangkung + Tempe bacem (4 potong) + kelapa parut', calories: 670, protein: 58, carbs: 34, fat: 36 }
-                    ]
-                },
-                {
-                    day: 'Tuesday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 4, time: '10:00', type: 'Break Fast', food: 'Pecel lele (2 ekor) + lalapan mentah + Rempeyek kacang (1 genggam)', calories: 590, protein: 48, carbs: 12, fat: 40 },
-                        { id: 5, time: '13:00', type: 'Lunch', food: 'Bakso ikan (4 butir) + kuah kaldu + Telur puyuh (6 butir) + sayur sawi', calories: 640, protein: 46, carbs: 18, fat: 38 },
-                        { id: 6, time: '17:30', type: 'Final Meal', food: 'Ayam bakar bumbu rujak 150g + Gado-gado tanpa lontong + bumbu kacang', calories: 670, protein: 64, carbs: 27, fat: 38 }
-                    ]
-                },
-                {
-                    day: 'Wednesday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 7, time: '10:00', type: 'Break Fast', food: 'Ikan tongkol kaleng 150g + sambal kacang + Perkedel tahu (2 potong) + kemangi', calories: 580, protein: 50, carbs: 10, fat: 38 },
-                        { id: 8, time: '13:00', type: 'Lunch', food: 'Gudeg tanpa nasi + ayam kampung 100g + Telur balado (2 butir) + tempe goreng', calories: 650, protein: 52, carbs: 22, fat: 36 },
-                        { id: 9, time: '17:30', type: 'Final Meal', food: 'Ikan mujair bakar 200g + plecing kangkung + Urap-urap + kelapa parut segar', calories: 670, protein: 56, carbs: 25, fat: 42 }
-                    ]
-                },
-                {
-                    day: 'Thursday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 10, time: '10:00', type: 'Break Fast', food: 'Sate kambing (12 tusuk) + bawang merah + Timun + cabe rawit + garam', calories: 590, protein: 54, carbs: 8, fat: 38 },
-                        { id: 11, time: '13:00', type: 'Lunch', food: 'Rawon tanpa nasi + daging 120g + Telur asin (2 butir) + kerupuk ikan', calories: 630, protein: 50, carbs: 12, fat: 42 },
-                        { id: 12, time: '17:30', type: 'Final Meal', food: 'Ikan bandeng presto 180g + tumis tauge + Sambel goreng tempe + cabai hijau', calories: 680, protein: 54, carbs: 37, fat: 36 }
-                    ]
-                },
-                {
-                    day: 'Friday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 13, time: '10:00', type: 'Break Fast', food: 'Pepes ikan mas 180g + daun kemangi + Lalap mentah + sambal terasi', calories: 570, protein: 48, carbs: 8, fat: 38 },
-                        { id: 14, time: '13:00', type: 'Lunch', food: 'Sop buntut + daging 100g + telur rebus + Tahu kuning goreng (3 potong)', calories: 660, protein: 52, carbs: 15, fat: 44 },
-                        { id: 15, time: '17:30', type: 'Final Meal', food: 'Ayam penyet 150g + sambal + lalapan + Tumis bayam + jagung muda + tempe', calories: 670, protein: 58, carbs: 34, fat: 34 }
-                    ]
-                },
-                {
-                    day: 'Saturday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 16, time: '10:00', type: 'Break Fast', food: 'Ikan asin jambal roti + tumis kangkung + Telur dadar (2 butir) + bawang daun', calories: 580, protein: 46, carbs: 10, fat: 40 },
-                        { id: 17, time: '13:00', type: 'Lunch', food: 'Empal daging 120g + sayur asem + Tempe mendoan (4 potong) + cabai', calories: 650, protein: 54, carbs: 18, fat: 38 },
-                        { id: 18, time: '17:30', type: 'Final Meal', food: 'Ikan gurame bakar 180g + plecing kangkung + Perkedel jagung (2 potong) + sambal', calories: 670, protein: 58, carbs: 29, fat: 38 }
-                    ]
-                },
-                {
-                    day: 'Sunday',
-                    fastingWindow: '18:00 - 10:00',
-                    meals: [
-                        { id: 19, time: '10:00', type: 'Break Fast', food: 'Bebek goreng 120g + lalapan segar + Rempeyek kacang tanah + kerupuk', calories: 590, protein: 48, carbs: 12, fat: 42 },
-                        { id: 20, time: '13:00', type: 'Lunch', food: 'Tongseng kambing 100g + kubis + telur + Tahu putih rebus (4 potong) + sambal', calories: 640, protein: 52, carbs: 18, fat: 38 },
-                        { id: 21, time: '17:30', type: 'Final Meal', food: 'Ikan salmon/dori panggang 180g + Capcay + tahu + tauge + minyak kelapa', calories: 670, protein: 58, carbs: 27, fat: 36 }
-                    ]
-                }
-            ];
-
-            const scheduledActivities = [
-                { id: 1, time: '04:30', activity: 'Wake Up + Personal Care', duration: 10, category: 'self-care', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'sun' },
-                { id: 2, time: '04:40', activity: 'Mindful Meditation', duration: 10, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'heart' },
-                { id: 3, time: '04:50', activity: 'Fajr Prayer + Presence Practice', duration: 15, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'star' },
-                { id: 4, time: '05:05', activity: 'Mindful Movement (Indoor)', duration: 15, category: 'physical', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'dumbbell' },
-                { id: 5, time: '05:20', activity: 'Mindful Walk/Nature Connection', duration: 15, category: 'physical', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'sun' },
-                { id: 6, time: '05:35', activity: 'Personal Preparation', duration: 20, category: 'self-care', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'sun' },
-                { id: 7, time: '05:55', activity: 'Family Time/Breakfast', duration: 20, category: 'family', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'users' },
-                { id: 8, time: '06:30', activity: 'Work (Deep Focus Blocks)', duration: 720, category: 'career', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'briefcase' },
-                { id: 9, time: '19:00', activity: 'Maghrib Prayer + Mindful Presence', duration: 15, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'star' },
-                { id: 10, time: '19:15', activity: 'Mindful Family Dinner', duration: 45, category: 'family', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'users' },
-                { id: 11, time: '20:00', activity: 'Conscious Family Time', duration: 30, category: 'family', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'users' },
-                { id: 12, time: '20:30', activity: 'Isha Prayer + Contemplation', duration: 15, category: 'spiritual', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'star' },
-                { id: 13, time: '20:45', activity: 'Productive Wind-down Routine', duration: 30, category: 'development', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], icon: 'book' }
-            ];
-
-            const profileStats = {
-                weight: 72,
-                height: 168,
-                age: 40,
-                bmi: 25.5,
-                targetWeight: '65-68kg',
-                dailyTarget: 1900
-            };
-
-            const [meals, setMeals] = useState(() => {
-                const saved = localStorage.getItem(`meals_day_${currentDay}`);
-                if (saved) {
-                    return JSON.parse(saved);
-                }
-                return dietPlan[currentDay].meals.map(meal => ({ ...meal, photo: false, completed: false }));
-            });
-
-            useEffect(() => {
-                const timer = setInterval(() => {
-                    setCurrentTime(new Date());
-                }, 60000);
-                return () => clearInterval(timer);
-            }, []);
-
-            useEffect(() => {
-                const saved = localStorage.getItem(`meals_day_${currentDay}`);
-                if (saved) {
-                    setMeals(JSON.parse(saved));
-                } else {
-                    setMeals(dietPlan[currentDay].meals.map(meal => ({ ...meal, photo: false, completed: false })));
-                }
-            }, [currentDay]);
-
-            useEffect(() => {
-                localStorage.setItem(`meals_day_${currentDay}`, JSON.stringify(meals));
-            }, [meals, currentDay]);
-
-            const getCurrentDaySchedule = () => {
-                const today = currentTime.toLocaleDateString('en-US', { weekday: 'long' });
-                return scheduledActivities
-                    .filter(activity => activity.days.includes(today))
-                    .sort((a, b) => a.time.localeCompare(b.time));
-            };
-
-            const getCurrentActivity = () => {
-                const todaySchedule = getCurrentDaySchedule();
-                const currentTimeStr = currentTime.toTimeString().slice(0, 5);
-                
-                return todaySchedule.find(activity => {
-                    const [hours, minutes] = activity.time.split(':');
-                    const activityEndTime = new Date();
-                    activityEndTime.setHours(parseInt(hours), parseInt(minutes) + activity.duration);
-                    const endTimeStr = activityEndTime.toTimeString().slice(0, 5);
-                    
-                    return activity.time <= currentTimeStr && currentTimeStr <= endTimeStr;
-                });
-            };
-
-            const getNextActivity = () => {
-                const todaySchedule = getCurrentDaySchedule();
-                const currentTimeStr = currentTime.toTimeString().slice(0, 5);
-                
-                return todaySchedule.find(activity => activity.time > currentTimeStr);
-            };
-
-            const toggleActivityCompletion = (activityId) => {
-                const newCompleted = new Set(completedActivities);
-                if (newCompleted.has(activityId)) {
-                    newCompleted.delete(activityId);
-                } else {
-                    newCompleted.add(activityId);
-                }
-                setCompletedActivities(newCompleted);
-            };
-
-            const toggleMealCompletion = (mealId) => {
-                setMeals(meals.map(meal => 
-                    meal.id === mealId ? { ...meal, completed: !meal.completed } : meal
-                ));
-            };
-
-            const addPhotoToMeal = (mealId) => {
-                if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-                    const input = document.createElement('input');
-                    input.type = 'file';
-                    input.accept = 'image/*';
-                    input.capture = 'environment';
-                    
-                    input.onchange = (e) => {
-                        if (e.target.files && e.target.files[0]) {
-                            setMeals(meals.map(meal => 
-                                meal.id === mealId ? { ...meal, photo: true } : meal
-                            ));
-                        }
-                    };
-                    
-                    input.click();
-                } else {
-                    setMeals(meals.map(meal => 
-                        meal.id === mealId ? { ...meal, photo: !meal.photo } : meal
-                    ));
-                }
-            };
-
-            const changeDietDay = (direction) => {
-                const newDay = direction === 'next' ? 
-                    (currentDay + 1) % 7 : 
-                    currentDay === 0 ? 6 : currentDay - 1;
-                setCurrentDay(newDay);
-            };
-
-            const getTotalCalories = () => {
-                return meals.filter(meal => meal.completed).reduce((total, meal) => total + meal.calories, 0);
-            };
-
-            const getTotalMacros = () => {
-                const completedMeals = meals.filter(meal => meal.completed);
-                return {
-                    protein: completedMeals.reduce((total, meal) => total + meal.protein, 0),
-                    carbs: completedMeals.reduce((total, meal) => total + meal.carbs, 0),
-                    fat: completedMeals.reduce((total, meal) => total + meal.fat, 0)
-                };
-            };
-
-            const getIcon = (iconName) => {
-                const iconMap = {
-                    sun: Sun,
-                    heart: Heart,
-                    star: Star,
-                    dumbbell: Dumbbell,
-                    users: Users,
-                    briefcase: Briefcase,
-                    book: Book
-                };
-                const IconComponent = iconMap[iconName] || Circle;
-                return React.createElement(IconComponent, { className: "w-4 h-4" });
-            };
-
-            const categoryColors = {
-                spiritual: 'bg-purple-500',
-                physical: 'bg-green-500',
-                family: 'bg-blue-500',
-                career: 'bg-orange-500',
-                'self-care': 'bg-pink-500',
-                development: 'bg-indigo-500'
-            };
-
-            // Dashboard component would continue here...
-            // [Rest of the React component code - similar structure to previous version]
-            
-            return React.createElement('div', { className: "text-center p-8" },
-                React.createElement('h1', { className: "text-2xl font-bold text-purple-600 mb-4" }, "MindfulTracker Pro"),
-                React.createElement('p', { className: "text-gray-600 mb-6" }, "PWA Version - Ready for Deployment!"),
-                React.createElement('div', { className: "bg-green-50 p-4 rounded-lg border border-green-200" },
-                    React.createElement('p', { className: "text-green-800 font-medium" }, "✅ PWA Features Enabled:"),
-                    React.createElement('ul', { className: "text-sm text-green-700 mt-2 space-y-1" },
-                        React.createElement('li', null, "📱 Installable on any device"),
-                        React.createElement('li', null, "🔄 Offline support"),
-                        React.createElement('li', null, "📸 Camera integration"),
-                        React.createElement('li', null, "💾 Local data storage"),
-                        React.createElement('li', null, "🔔 Push notifications"),
-                        React.createElement('li', null, "🎯 Your complete Indonesian diet plan"),
-                        React.createElement('li', null, "⏰ 4:30 AM - 9:15 PM schedule")
-                    )
-                ),
-                React.createElement('p', { className: "text-sm text-gray-500 mt-4" }, "Download all files and deploy to start using!")
-            );
-        }
-
-        // Render the React app
-        ReactDOM.render(React.createElement(MindfulTracker), document.getElementById('root'));
+        // Initialize App
+        loadData();
+        initializeMeals();
+        render();
 
         console.log('🧘 MindfulTracker PWA loaded successfully!');
+        console.log('📱 Complete single-file PWA with no dependencies');
+        console.log('🍽️ Indonesian diet plan: 7 days, 1900 cal/day');
+        console.log('⏰ Daily schedule: 4:30 AM - 9:15 PM');
+        console.log('🎯 Life goals tracking integrated');
     </script>
 </body>
 </html>
